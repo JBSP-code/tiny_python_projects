@@ -27,9 +27,9 @@ def main():
     """Run the program"""
 
     args = get_args()
-    pos_arg = args.positional
+    word = args.word
 
-    print(f'positional = "{pos_arg}"')
+    print(word)
 
 
 # --------------------------------------------------
