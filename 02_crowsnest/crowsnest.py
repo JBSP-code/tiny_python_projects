@@ -29,7 +29,7 @@ def main():
     args = get_args()
     word = args.word
 
-    print(word)
+    print("Ahoy, Captain, a " + word + " off the larboard bow!")
 
 
 # --------------------------------------------------
