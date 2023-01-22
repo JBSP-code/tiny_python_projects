@@ -17,7 +17,7 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
 
-    parser.add_argument("items", metavar="str", help="Item(s) to bring", nargs="+")
+    parser.add_argument("item", metavar="str", help="Item(s) to bring", nargs="+")
 
     parser.add_argument("-s", "--sorted", help="Sort the items", action="store_true")
 
@@ -29,12 +29,12 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
-    sort_flag = args.sorted
-    items = args.items
+    items = args.item
 
-    if sort_flag == True:
+    if args.sorted == True:
         items.sort()
 
+    items_to_bring = ""
     if len(items) >= 3:
         items.insert(-1, "and ")
         items_to_bring = ", ".join(items[:-1]) + items[-1]
@@ -43,7 +43,7 @@ def main():
     else:
         items_to_bring = items[0]
 
-    print("You are bringing " + items_to_bring + ".")
+    print(f"You are bringing {items_to_bring}.")
 
 
 # --------------------------------------------------
