@@ -17,7 +17,7 @@ def get_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
 
-    parser.add_argument("positional", metavar="str", help="Input text")
+    parser.add_argument("text", metavar="str", help="Input text")
 
     return parser.parse_args()
 
@@ -27,7 +27,6 @@ def main():
     """Make a jazz noise here"""
 
     args = get_args()
-    pos_arg = args.positional
 
     jumper = {
         "1": "9",
@@ -42,11 +41,7 @@ def main():
         "0": "5",
     }
 
-    for char in pos_arg:
-        if char in jumper:
-            print(jumper[char], end="")
-        else:
-            print(char, end="")
+    print("".join([jumper.get(char, char) for char in args.text]))
 
 
 # --------------------------------------------------
