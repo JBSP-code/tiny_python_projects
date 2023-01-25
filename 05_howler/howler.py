@@ -34,8 +34,7 @@ def main():
     outfile_arg = args.outfile
     input_arg = args.input
 
-    print(f'str_arg = "{outfile_arg}"')
-    print(f'positional = "{input_arg}"')
+    print(input_arg.upper())
 
 
 # --------------------------------------------------
