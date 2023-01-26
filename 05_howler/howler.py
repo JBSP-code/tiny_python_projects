@@ -6,6 +6,7 @@ Purpose: Howler (upper-cases input)
 """
 
 import argparse
+import os
 
 
 # --------------------------------------------------
@@ -31,15 +32,20 @@ def main():
     """Process the arguments"""
 
     args = get_args()
-    outfile_arg = args.outfile
-    input_arg = args.input
 
-    if outfile_arg != "":
-        out_fh = open(outfile_arg, "wt")
-        out_fh.write(input_arg.upper())
+    if os.path.isfile(args.input):
+        in_fh = open(args.input)
+        input_text = in_fh.read()
+        in_fh.close()
+    else:
+        input_text = args.input
+
+    if args.outfile != "":
+        out_fh = open(args.outfile, "wt")
+        out_fh.write(input_text.upper())
         out_fh.close()
     else:
-        print(input_arg.upper())
+        print(input_text.upper())
 
 
 # --------------------------------------------------
