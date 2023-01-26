@@ -34,7 +34,12 @@ def main():
     outfile_arg = args.outfile
     input_arg = args.input
 
-    print(input_arg.upper())
+    if outfile_arg != "":
+        out_fh = open(outfile_arg, "wt")
+        out_fh.write(input_arg.upper())
+        out_fh.close()
+    else:
+        print(input_arg.upper())
 
 
 # --------------------------------------------------
