@@ -24,7 +24,14 @@ def get_args():
         "-o", "--outfile", help="Output filename", metavar="str", type=str, default="",
     )
 
-    return parser.parse_args()
+    args = parser.parse_args()
+
+    if os.path.isfile(args.input):
+        in_fh = open(args.input)
+        args.input = in_fh.read().rstrip()
+        in_fh.close()
+
+    return args
 
 
 # --------------------------------------------------
@@ -33,19 +40,12 @@ def main():
 
     args = get_args()
 
-    if os.path.isfile(args.input):
-        in_fh = open(args.input)
-        input_text = in_fh.read()
-        in_fh.close()
-    else:
-        input_text = args.input
-
     if args.outfile != "":
         out_fh = open(args.outfile, "wt")
-        out_fh.write(input_text.upper())
+        out_fh.write(args.input.upper())
         out_fh.close()
     else:
-        print(input_text.upper())
+        print(args.input.upper())
 
 
 # --------------------------------------------------
